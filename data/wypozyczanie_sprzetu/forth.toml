@@ -1,0 +1,5 @@
+name = "Koparka Cat C6.6 Acert"
+weight = 3
+image = "forth.png"
+
+attribute_details = ["Yanmar 31NV76", "13.2 KW", "1470.0 kg", "691 444 999"]

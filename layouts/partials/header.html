@@ -1,0 +1,29 @@
+<body {{ if eq ( $.Scratch.Get "page" ) "taxonomy" }} onload="document.getElementById('onclick-menu').focus();" {{ end }} class='page--{{ $.Scratch.Get "page" }}'>
+	<header >
+		<section class="grid-inner" >
+			<div class='grid-row three-cells no-gap'>
+			
+				<div class="grid-cell grid-half third-col">
+					{{ range .Site.Data.header }}
+						{{/* if eq .RelPermalink "/header" */}} 
+							<div class="logo-area sides">
+									<a class="logo image-container" href="/" alt="{{ $.Site.Title }}">	
+										<img class="responsive" title="{{ $.Site.Title }}" alt="{{ $.Site.Title }}" src="{{ $.Site.BaseURL }}img/{{ . }}"/>
+									</a>
+							</div>
+						{{/* end */}}
+					{{ end }}
+				</div> 
+				
+				<div class="grid-cell grid-half">  <!--  push-cell push-third medium      -->
+					<div class="main-menu-area align-right sides">
+						{{ partial "functions/navbar.html" . }}
+					</div>
+				</div>
+			</div>
+		</section>
+	</header>
+	
+	<div class="debug">TEMPLATE - {{ $.Scratch.Get "page" }} - SINGLE HTML</div>
+
+	{{ partial "contenttop.html" . }}

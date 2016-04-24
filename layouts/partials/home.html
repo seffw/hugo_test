@@ -1,0 +1,40 @@
+{{ range .Data.Pages }}
+	<!-- <div> --------- Title: {{ .Title }} --------------- Link: {{ .RelPermalink }} ------ </div> -->
+	{{ if eq .RelPermalink "/" }} 
+		<section class="grid-row">
+			<div class="grid-cell grid-half">
+				<div class="box padded-box no-bg">
+					<h2>{{ .Title }}</h2>
+					{{ .Content }} 
+				</div>
+			</div>
+
+			<div class="grid-cell grid-half gap">
+				<div class="box padded-sides join-left no-bg">
+					<section class="grid-row">
+						<div class="grid-cell grid-half gap">
+							<div class="box custom-shape hexagon box-left">
+								<img class="responsive" src="{{ .Site.BaseURL }}/img/leftshape.png"/>
+								<div class="inside-text" >
+									<h3>{{ .Params.middle_title }}</h3>
+									<p>{{ .Params.middle_content }}</p>
+								</div>
+								<button class="small-button centred">{{ .Params.button }}</button>
+							</div>
+						</div>
+						<div class="grid-cell grid-half gap">
+							<div class="box custom-shape hexagon box-right">
+									<img class="responsive" src="{{ .Site.BaseURL }}/img/rightshape.png"/>
+									<div class="inside-text" >
+										<h3>{{ .Params.right_title }}</h3>
+										<p>{{ .Params.right_content }}</p>
+									</div>
+									<button class="small-button centred">{{ .Params.button }}</button>
+							</div>
+						</div>
+					</section>
+				</div>
+			</div>
+		</section><!-- /.row -->
+	{{ end }}
+{{ end }}

@@ -1,0 +1,17 @@
+<div class='grid-container bg-light'>  <!-- outer-container ??  -->
+
+	{{ if and ( ne ( $.Scratch.Get "page" ) "grid" ) ( ne ( $.Scratch.Get "page" ) "contact" ) }}
+		<section class='grid-row'>
+			<div class="grid-cell grid-half"><img class="responsive" title="{{ .Site.Title }}" alt="{{ .Site.Title }}" src="{{ .Site.BaseURL }}img/leftheader.jpg"/></div>
+			<div class="grid-cell grid-quarter"><img class="responsive" title="{{ .Site.Title }}" alt="{{ .Site.Title }}" src="{{ .Site.BaseURL }}img/middleheader.jpg"/></div>
+			<div class="grid-cell grid-quarter"><img class="responsive" title="{{ .Site.Title }}" alt="{{ .Site.Title }}" src="{{ .Site.BaseURL }}img/rightheader.jpg"/></div>
+		</section><!-- /.row -->
+	{{ else }}
+		{{ if eq ( $.Scratch.Get "page" ) "contact" }}
+			<section class='grid-row'>
+				<div class="grid-cell grid-full">
+					<img class="responsive" title="{{ .Site.Title }}" alt="{{ .Site.Title }}" src="{{ .Site.BaseURL }}img/{{ $.Scratch.Get "page" }}.png"/>
+				</div>
+			</section><!-- /.row -->
+		{{ end }}
+	{{ end }}

@@ -1,0 +1,46 @@
+	<footer class="bg-dark">
+		<section class="grid-inner">
+		  <div class="grid-row join-bottom">
+				{{ range $count, $element := where .Site.Pages "Section" "blocks" }}
+					{{ $rellink := ( trim .RelPermalink "/" ) }} 
+					{{ $link_array := ( split $rellink "/" ) }} 
+
+					{{ if eq ( index $link_array 1 ) "footer" }}
+						<div class="grid-cell grid-half">
+							<div class="holder" >
+								<div class="sides middle">
+									<div class="large-text">{{ .Params.footer_left_one }} <strong>{{ .Params.footer_left_two }}</strong></div>
+								</div>
+							</div>
+						</div>
+						<div class="grid-cell grid-half">
+							<div class="right holder" >
+								<div class="sides middle">
+									<div>{{ .Params.footer_right_one }} <strong>{{ .Params.footer_right_two }}</strong> <strong class="image-before first">{{ .Params.footer_right_three }}</strong><strong class="image-before second">{{ .Params.footer_right_four }}</strong></div>
+								</div>
+								<div class="debug screen-size" >screen size: </div>
+							</div>
+						</div>
+					{{ end }}
+				{{ end }}
+			</div>
+	  </section>	<!-- /.container -->
+	</footer>
+
+	{{ partial "contentbottom.html" . }}
+	 
+	<script type="text/javascript" src="{{ .Site.BaseURL }}js/modernizr.custom.46884.js"></script>
+	<script type="text/javascript" src="{{ .Site.BaseURL }}js/assets/jquery.min.js"></script>
+	
+	<script type="text/javascript" src="{{ .Site.BaseURL }}js/jquery.cover.js"></script>
+	<script type="text/javascript">
+		(function($) {
+			$(document).ready(function() {
+				$(".cover").cover();
+			});
+		})(jQuery);
+	</script>
+
+</body>
+
+</html>

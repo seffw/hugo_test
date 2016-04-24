@@ -1,0 +1,26 @@
+<nav itemtype="http://schema.org/SiteNavigationElement" itemscope="itemscope" role="navigation" class="menu" id="menu-primary">
+
+	<div class="menu-container">
+
+		<div id="menu-toggle-primary">
+			<a class="open-menu-primary" href="#menu-primary"><span class="screen-reader-text">Open this menu</span></a>
+			<a class="close-menu-primary" href="#"><span class="screen-reader-text">Close this menu</span></a>
+		</div><!-- .menu-toggle -->
+
+		<div class="wrap">
+			<ul class="menu-items" id="menu-primary-items">
+				{{ range $key, $value := .Data.Pages }}
+					<li class="menu-item"><a href="#">{{ $value }}</a></li>
+				{{ end }}
+			</ul>
+		</div><!-- .wrap -->
+
+	</div><!-- .menu-container -->
+
+</nav>
+
+<!--  {{ $currentNode := . }}
+  {{ range .Site.Menus.mainmenu }}
+  <li class='pure-menu-item {{ if or ( $currentNode.IsMenuCurrent "mainmenu" . ) ( $currentNode.HasMenuCurrent "mainmenu" . ) }} active{{ end }}  page'><a href="{{ .URL }}" class="pure-menu-link">{{ .Name }}</a></li>
+  {{ end }}  -->
+	

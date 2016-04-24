@@ -1,0 +1,11 @@
+<nav itemtype="http://schema.org/SiteNavigationElement" itemscope="itemscope" role="navigation" class="menu navbar" id="menu-primary">
+
+	<ul class="menu-items align-right" id="menu-items">
+		{{ $currentNode := . }}
+		{{ range .Site.Menus.main }}
+			<li class='menu-item{{if $currentNode.IsMenuCurrent "main" . }} active{{end}}'>
+				<a href="{{ .URL }}">{{ .Name }}</a>
+			</li>
+		{{ end }}
+	</ul>
+</nav>

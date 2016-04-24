@@ -1,0 +1,44 @@
+<div class="debug">
+	<br/><br/><br/><br/><br/><br/>
+	PARTIAL FRAME
+</div>
+
+{{ partial "head.html" . }}
+{{ partial "header.html" . }}
+
+<div class='grid-inner bg-light'>
+
+	<section class="grid-row join-bottom">
+		<div class="grid-cell grid-half">
+			<div class="sides no-bg">
+				<h1>{{ .Title }}</h1>
+			</div>
+		</div>
+	</section>
+	
+	{{ if or ( eq ( $.Scratch.Get "page" ) "promo" ) ( eq ( $.Scratch.Get "page" ) "contact" ) }}
+	
+		<section class="grid-row">
+		{{ $page_title := .Title }}
+		
+			{{ range $count, $element := where .Site.Pages "Section" ( $page_title | lower )  }}
+			
+				{{ $rellink := ( trim .RelPermalink "/" ) }} 
+				{{ $link_array := ( split $rellink "/" ) }} 
+				
+				{{ .Scratch.Set "link_array" $link_array }}
+
+				{{ .Render ( print ( $.Scratch.Get "page" ) ) }}
+			
+			{{ end }}
+		</section><!-- /.row -->
+		
+	{{ else }}
+	
+		{{ partial ( print ( $.Scratch.Get "page" ) ".html" ) . }}
+
+	{{ end }}
+
+</div> <!-- grid-inner -->
+		
+{{ partial "footer.html" . }}

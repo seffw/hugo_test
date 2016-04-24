@@ -1,0 +1,41 @@
+{{ $section := ( trim .RelPermalink "/" ) }}
+	
+<section class="grid-row gap">
+		{{/* range $count, $element := where $.Site.Pages "Section" ( $section )  */}}
+		{{ range .Site.Data.wypozyczanie_sprzetu.index }}
+			{{ range $count, $element := . }}
+				{{ if ne $count 0 }}
+					{{ $.Scratch.Add "attribute_names" "," }}
+				{{ end }}
+				
+				{{ $.Scratch.Add "attribute_names" . }}
+
+			{{ end }}
+		{{ end }}
+		
+		{{ $names_array := ( split ( $.Scratch.Get "attribute_names" ) "," ) }}	
+					
+		{{ range sort .Site.Data.wypozyczanie_sprzetu "value" "asc" }}
+			{{ if .name }}
+				<div class="grid-cell grid-quarter">
+					<img class="responsive inner" src="{{ $.Site.BaseURL }}/img/{{ .image }}"/>
+					<h3>{{ .name }}</h3>
+					<div class="indent">
+						{{ range $count, $element := first 3 .attribute_details }}
+							<h5>{{ index $names_array $count }}</h5>
+							<div>{{ . }}</div>
+						{{ end }}
+					</div>
+					<div class="text-box bg-yellow">
+						{{ range last 1 .attribute_details }}
+							<img class="responsive inline" src="{{ $.Site.BaseURL }}/img/phone-small.png"/>
+							<div class="inline">
+								<h5>{{ index $names_array ( sub ( len $names_array ) 1 ) }}</h5>
+								<div>{{ . }}</div>
+							</div>
+						{{ end }}
+					</div>
+				</div>
+			{{ end }}
+		{{ end }}
+</section>

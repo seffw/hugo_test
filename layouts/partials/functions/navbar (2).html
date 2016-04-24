@@ -1,0 +1,17 @@
+<nav itemtype="http://schema.org/SiteNavigationElement" itemscope="itemscope" role="navigation" class="menu navbar" id="menu-primary">
+
+	<ul class="menu-items align-right" id="menu-items">
+		{{ range $key, $value := .Site.Pages.ByWeight }}
+			{{ if eq .Params.ispage "true" }}
+				<li class="menu-item">
+					<a href="#">{{ .Title }}</a>
+				</li>
+			{{ end }}
+		{{ end }}
+	</ul>
+
+	<!--  {{ $currentNode := . }}
+	  {{ range .Site.Menus.mainmenu }}
+	  <li class='pure-menu-item {{ if or ( $currentNode.IsMenuCurrent "mainmenu" . ) ( $currentNode.HasMenuCurrent "mainmenu" . ) }} active{{ end }}  page'><a href="{{ .URL }}" class="pure-menu-link">{{ .Name }}</a></li>
+	  {{ end }}  -->
+</nav>

@@ -1,0 +1,48 @@
+<section class="grid-row join-bottom">
+	<div class="grid-cell grid-half">
+		<div class="sides no-bg">
+			<h1>{{ ( $.Scratch.Get "page_title" ) }}</h1>
+		</div>
+	</div>
+</section>
+
+<section class="grid-row">
+	{{ range $count, $element := where .Site.Pages "Section" "blocks" }}
+		{{ $rellink := ( trim .RelPermalink "/" ) }} 
+		{{ $link_array := ( split $rellink "/" ) }} 
+														
+		{{ if eq ( index $link_array 1 ) ( ( $.Scratch.Get "page_title" ) | lower ) }}
+		
+			<div class="grid-cell grid-half">
+				<div class="join-top join-next no-bg">
+				
+					<section class="grid-row">
+						<div class="grid-cell grid-full">
+							<div class="no-bg">
+								<h3>{{ .Title }}</h3>
+							</div>
+						</div>
+					</section>
+					
+					<section class="grid-row gap">
+							{{ range $new_count, $new_element := where $.Site.Pages "Section" "blocks" }}
+								{{ $new_rellink := ( trim .RelPermalink "/" ) }} 
+								{{ $new_link_array := ( split $new_rellink "/" ) }} 
+								{{/* if and ( eq ( len $new_link_array ) 3 ) ( in $new_link_array ( index $link_array 1 ) ) */}}
+
+								{{ if eq ( index $new_link_array 1 ) ( ( $.Scratch.Get "page_title" ) | lower ) }}
+									<div class="grid-cell grid-third">
+										<div class="inner">
+											<img class="responsive centred" src="{{ $.Site.BaseURL }}/img/{{ .Title | urlize }}.png"/>
+											<h3 class="centred">{{ .Title }}</h3>
+											{{ .Content }}
+										</div>
+									</div>
+								{{ end }}
+							{{ end }}
+					</section>
+				</div>
+			</div>
+		{{ end }}
+	{{ end }}
+</section><!-- /.row -->
