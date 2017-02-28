@@ -1,0 +1,40 @@
+:root {
+  --defaultColorLight: #eee;
+  --backgroundColor: #fff;
+}
+
+.root {
+
+}
+
+.controlPane {
+  height: calc(100% - 55px);
+  overflow: auto;
+  padding: 0 20px;
+  border-right: 1px solid var(--defaultColorLight);
+}
+
+.previewPane {
+  height: calc(100% - 55px);
+}
+
+.blocker {
+}
+
+.blocker > * {
+  pointer-events: none;
+}
+
+
+.footer {
+  height: 55px;
+  padding: 10px 20px;
+  position: absolute;
+  z-index: 9999;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-top: 1px solid var(--defaultColorLight);
+  background: var(--backgroundColor);
+  text-align: right;
+}

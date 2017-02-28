@@ -1,0 +1,33 @@
+@import '../theme.css';
+
+.card {
+  composes: base container rounded depth;
+  overflow: hidden;
+}
+
+.card > *:not(iframe, video, img, header, footer) {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.card > *:not(iframe, video, img, header, footer):first-child {
+  margin-top: 10px;
+}
+
+.card > *:not(iframe, video, img, header, footer):last-child {
+  margin-bottom: 10px;
+}
+
+.card > iframe,
+.card > video,
+.card > img {
+  max-width: 100%;
+}
+
+.card h1 {
+  margin: 15px 0;
+  padding: 0;
+  border: none;
+  color: var(--defaultColor);
+  font-size: 18px;
+}
